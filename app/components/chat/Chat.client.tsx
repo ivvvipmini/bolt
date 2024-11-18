@@ -262,15 +262,13 @@ export const ChatImpl = memo(({ initialMessages, storeMessageHistory }: ChatProp
           content: parsedMessages[i] || '',
         };
       })}
-      enhancePrompt={() => {
+     
+        enhancePrompt={() => {
         enhancePrompt(
           input,
-          (input) => {
-            setInput(input);
-            scrollTextArea();
-          },
+          setInput,
           model,
-          provider,
+          provider?.name || DEFAULT_PROVIDER.name,
           apiKeys
         );
       }}
